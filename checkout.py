@@ -6,8 +6,7 @@ def process_order(user_id: int, item_id: str, quantity: int, unit_price: float, 
     if not check_stock(item_id, quantity):
         return {"status": "rejected", "reason": "out_of_stock"}
 
-    # Applies average customer discount
-    avg_discount = calculate_average_discount(discounts)
+    avg_discount = discounts[0]
     final_price = calculate_discount(unit_price * quantity, avg_discount)
 
     return {
